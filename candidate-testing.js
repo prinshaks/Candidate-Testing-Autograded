@@ -40,13 +40,15 @@ function askQuestion() {
 }
 
 function gradeQuiz(candidateAnswers) {
+  let numCorrectAnswers = 0;
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
   for(let i=0;i<candidateAnswers.length;i++){
-    candidateAnswer = candidateAnswers[i];
-    correctAnswer = correctAnswers[i];
+    candidateAnswer = candidateAnswers[i].toLowerCase();
+    correctAnswer = correctAnswers[i].toLowerCase();
     console.log(`${i+1}. Your answer: ${candidateAnswer} `);
     if (candidateAnswer===correctAnswer){
       console.log(`Correct!`);
+      numCorrectAnswers = numCorrectAnswers + 1;
     }else{
       console.log(`Wrong. Correct Answer is: ${correctAnswer}`);
     }
@@ -56,8 +58,13 @@ function gradeQuiz(candidateAnswers) {
 
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade=0;  //TODO 3.2 use this variable to calculate the candidates score.
 
+grade =(numCorrectAnswers/questions.length)*100;
+if (grade>=80){
+  console.log("You passed!");
+
+}else {console.log("Failed");}
 
   return grade;
 }
